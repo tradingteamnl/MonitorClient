@@ -31,6 +31,7 @@ public class Login {
 
     //InlogControle InlogControle = new InlogControle();
     InterfaceGlobal GlobalI = new InterfaceGlobal();
+    InlogControle InlogControle = new InlogControle();
 
     public void loginScherm(Stage primaryStage) {
 
@@ -83,19 +84,15 @@ public class Login {
         scene.getStylesheets().add("global/Style2.css");
         primaryStage.show();
 
-        btn.setOnAction((javafx.event.ActionEvent e) -> {
-
-            //String Gebruikersnaam = userTextField.getText();
-           // String Wachtwoord = pwBox.getText();
-            //boolean check = InlogControle.login(Gebruikersnaam, Wachtwoord);
-            
-            
-            //if(check){
-                //ga naar home
-            //}else{
-                //clear ww veld en probeer opnieuw
-           // }
-
-        });
+        //btn.setOnAction((javafx.event.ActionEvent e) -> {
+        //String Gebruikersnaam = userTextField.getText();
+        // String Wachtwoord = pwBox.getText();
+        //boolean check = InlogControle.login(Gebruikersnaam, Wachtwoord);
+        //if(check){
+        //ga naar home
+        //}else{
+        //clear ww veld en probeer opnieuw
+        // }
+        //});
     }
 }

@@ -15,10 +15,11 @@ import javafx.stage.Stage;
  *
  * @author Jaros
  */
-
 public class MonitorClient extends Application {
+
     Login Login = new Login();
     InlogControle InlogControle = new InlogControle();
+
     @Override
     public void start(Stage primaryStage) {
         Login.loginScherm(primaryStage);
@@ -27,10 +28,10 @@ public class MonitorClient extends Application {
     /**
      * @param args the command line arguments
      */
-    public void main(String[] args) {
+    public void opstarten(String[] args) {
         //boolean firstLogin = InlogControle.firstLogin();
         launch(args);
-        
+
     }
-    
+
 }
