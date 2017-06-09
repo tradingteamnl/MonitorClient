@@ -6,7 +6,7 @@
 package InterfaceMethoden;
 
 /**
- *
+ *f
  * @author Jaros
  */
 
@@ -14,24 +14,15 @@ public class InlogControle {
     private String Gebruiker;
     private String Wachtwoord;
    
-    
-    
+ 
     public boolean login(String Gebruiker, String Wachtwoord){
         boolean klopt = false;
         this.Gebruiker = Gebruiker;
         this.Wachtwoord = Wachtwoord;
-        
-        
+ 
         
         return klopt;
     }
-    
-    
-    
-    
-    
-    
-    
     
     
     public boolean firstLogin(){
