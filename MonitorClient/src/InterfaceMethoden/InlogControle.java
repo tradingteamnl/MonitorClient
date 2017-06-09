@@ -11,8 +11,8 @@ package InterfaceMethoden;
  */
 
 public class InlogControle {
-    private String Gebruiker = " ";
-    private String Wachtwoord =  " ";
+    private String Gebruiker;
+    private String Wachtwoord;
    
  
     public boolean login(String Gebruiker, String Wachtwoord){

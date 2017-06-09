@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -84,15 +85,23 @@ public class Login {
         scene.getStylesheets().add("global/Style2.css");
         primaryStage.show();
 
-        //btn.setOnAction((javafx.event.ActionEvent e) -> {
-        //String Gebruikersnaam = userTextField.getText();
-        // String Wachtwoord = pwBox.getText();
-        //boolean check = InlogControle.login(Gebruikersnaam, Wachtwoord);
-        //if(check){
-        //ga naar home
-        //}else{
-        //clear ww veld en probeer opnieuw
-        // }
-        //});
+        btn.setOnAction((javafx.event.ActionEvent e) -> {
+            String Gebruikersnaam = userTextField.getText();
+            String Wachtwoord = pwBox.getText();
+            boolean check = InlogControle.login(Gebruikersnaam, Wachtwoord);
+            if (check) {
+                //ga naar home
+                GlobalI.setGebruiker(Gebruikersnaam);
+            } else {
+                userTextField.setText("");
+                pwBox.setText("");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);    // get an alert popup
+                alert.setTitle("warning");
+                alert.setHeaderText("username and/or password are incorrect");
+                alert.showAndWait();
+
+                //clear ww veld en probeer opnieuw
+            }
+        });
     }
 }
