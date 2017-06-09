@@ -9,36 +9,34 @@ package InterfaceMethoden;
  *
  * @author Jaros
  */
-
 public class InlogControle {
-    private String Gebruiker;
-    private String Wachtwoord;
-   
-    
-    
-    public boolean login(String Gebruiker, String Wachtwoord){
-        boolean klopt = false;
-        this.Gebruiker = Gebruiker;
-        this.Wachtwoord = Wachtwoord;
-        
-        
-        
-        return klopt;
+
+    /**
+     *
+     * @param gebruiker username
+     * @param wachtwoord wachtwoord wat is ingevuldF
+     * @return
+     */
+    public boolean getLogin(String gebruiker, String wachtwoord) {
+        return loginCheck(gebruiker, wachtwoord);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public boolean firstLogin(){
+
+    /**
+     *
+     * @param gebruiker username
+     * @param wachtwoord wachtwoord wat is ingevuld
+     * @return true of false
+     */
+    private boolean loginCheck(String gebruiker, String wachtwoord) {
+        
+        //laat het wachtwoord bestand
+        
+        
+        return;
+    }
+
+    public boolean firstLogin() {
         boolean klopt = true;
-        
-        
-        
         return klopt;
     }
 }

@@ -7,7 +7,6 @@ package Interface;
 
 import InterfaceMethoden.InlogControle;
 import InterfaceMethoden.InterfaceGlobal;
-import java.awt.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -28,9 +27,11 @@ import javafx.stage.Stage;
  * @author Jaros
  */
 public class Login {
-
-    //InlogControle InlogControle = new InlogControle();
+    
+    //maak objecten aan
+    InlogControle InlogControle = new InlogControle();
     InterfaceGlobal GlobalI = new InterfaceGlobal();
+    
 
     public void loginScherm(Stage primaryStage) {
 
@@ -80,21 +81,22 @@ public class Login {
         primaryStage.setTitle(GlobalI.productNaam());
         Scene scene = new Scene(grid, 1200, 920);
         primaryStage.setScene(scene);
-        scene.getStylesheets().add("global/Style2.css");
+        //scene.getStylesheets().add("global/Style2.css");
         primaryStage.show();
-
+        
+        //action
         btn.setOnAction((javafx.event.ActionEvent e) -> {
 
-            //String Gebruikersnaam = userTextField.getText();
-           // String Wachtwoord = pwBox.getText();
-            //boolean check = InlogControle.login(Gebruikersnaam, Wachtwoord);
+            String Gebruikersnaam = userTextField.getText();
+            String Wachtwoord = pwBox.getText();
+            boolean check = InlogControle.login(Gebruikersnaam, Wachtwoord);
             
             
-            //if(check){
+            if(check){
                 //ga naar home
-            //}else{
+            }else{
                 //clear ww veld en probeer opnieuw
-           // }
+            }
 
         });
     }

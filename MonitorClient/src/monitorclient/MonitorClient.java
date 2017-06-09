@@ -7,7 +7,6 @@ package monitorclient;
 
 import Interface.Login;
 import InterfaceMethoden.InlogControle;
-import static java.sql.DriverManager.println;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -27,7 +26,7 @@ public class MonitorClient extends Application {
     /**
      * @param args the command line arguments
      */
-    public void main(String[] args) {
+    public void opstrarten(String[] args) {
         //boolean firstLogin = InlogControle.firstLogin();
         launch(args);
         
