@@ -64,3 +64,5 @@ $RECYCLE.BIN/
 /MonitorClient/nbproject/private/
 /MonitorClient/build/
 /MonitorClient/dist/
+/MonitorClient/nbproject/
+*.xml
