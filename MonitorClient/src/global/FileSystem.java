@@ -6,7 +6,10 @@
 package global;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import javax.swing.JFileChooser;
@@ -66,7 +69,7 @@ public class FileSystem {
     }
 
     /**
-     * 
+     *
      * @param file bestand naam
      * @return true of false
      */
@@ -77,5 +80,20 @@ public class FileSystem {
         } else {
             return true;
         }
+    }
+
+    /**
+     * 
+     * @param fileName bestand naam
+     * @param FileData bestand data
+     * @throws FileNotFoundException error systeem
+     * @throws UnsupportedEncodingException error systeem
+     */
+    public void saveFile(String fileName, String FileData) throws FileNotFoundException, UnsupportedEncodingException {
+        
+        //sla bestankt op
+        PrintWriter writer;
+        writer = new PrintWriter(fileLocation() + fileName, "UTF-8");
+        writer.println(FileData);
     }
 }
