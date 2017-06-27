@@ -22,7 +22,9 @@ public class Decrypt {
      * @throws Exception Als er een error is/
      */
     public static String decrypt(String strEncrypted, String strKey) throws Exception {
-        String strData = "";
+        
+        //data voor de decrypt
+        String strData = strEncrypted;
 
         try {
             SecretKeySpec skeyspec = new SecretKeySpec(strKey.getBytes(), "Blowfish");
