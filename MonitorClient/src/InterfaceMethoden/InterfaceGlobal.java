@@ -9,18 +9,17 @@ package InterfaceMethoden;
  *
  * @author Jaros
  */
+public class InterfaceGlobal {
 
-public class InterfaceGlobal {    
-    public String productNaam(){
-        String productNaam = "bitfarmer";        
-        return productNaam;
-    }
-    
     public String Textnaam = "oplsagdata";
     public String OpslagDirectory = "test";
-    
-    
-     public String gebruiker;
+
+    public String productNaam() {
+        String productNaam = "bitfarmer";
+        return productNaam;
+    }
+
+    public String gebruiker = " ";
 
     public void setGebruiker(String gebruiker) {
         this.gebruiker = gebruiker;
@@ -29,8 +28,5 @@ public class InterfaceGlobal {
     public String getGebruiker() {
         return gebruiker;
     }
-     
-    
-    
-    
+
 }

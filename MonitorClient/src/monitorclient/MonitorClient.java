@@ -16,7 +16,6 @@ import javafx.stage.Stage;
  *
  * @author Jaros
  */
-
 public class MonitorClient extends Application {
     
     //maak objecten aan
@@ -49,7 +48,7 @@ public class MonitorClient extends Application {
     public void opstrarten(String[] args) {
         //boolean firstLogin = InlogControle.firstLogin();
         launch(args);
-        
+
     }
-    
+
 }

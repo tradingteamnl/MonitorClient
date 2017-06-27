@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -34,6 +35,7 @@ public class Login {
     //maak objecten aan
     InlogControle InlogControle = new InlogControle();
     InterfaceGlobal GlobalI = new InterfaceGlobal();
+    InlogControle InlogControle = new InlogControle();
 
     public void loginScherm(Stage primaryStage) {
 
@@ -97,7 +99,6 @@ public class Login {
                 
             }
 
-            
         });
     }
 }
