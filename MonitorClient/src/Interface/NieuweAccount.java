@@ -4,8 +4,6 @@ import InterfaceMethoden.InlogControle;
 import InterfaceMethoden.InterfaceGlobal;
 import Security.Encrypt;
 import global.FileSystem;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

@@ -20,7 +20,7 @@ public class Encrypt {
     public String encrypt(String strClearText, String strKey) throws Exception {
 
         //string data
-        String strData = strClearText;
+        String strData = "";
         System.out.println("Data om te versleutelen " + strData);
 
         SecretKeySpec skeyspec = new SecretKeySpec(strKey.getBytes(), "Blowfish");

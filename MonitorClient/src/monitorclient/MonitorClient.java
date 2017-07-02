@@ -16,40 +16,34 @@ import javafx.stage.Stage;
  *
  * @author Jaros
  */
-
 public class MonitorClient extends Application {
-    
+
     //maak objecten aan
-    Login Login = new Login();
-    InlogControle InlogControle = new InlogControle();
     FileSystem fileSystem = new FileSystem();
-    NieuweAccount nieuweAccount = new NieuweAccount();
-    
+
     @Override
     public void start(Stage primaryStage) {
-        
+
         //kijk het bestand bestaat
-        if(fileSystem.fileExcist("wachtwoord.txt")){
-           //stuur door naar het login scherm
-           Login.loginScherm(primaryStage);
+        if (fileSystem.fileExcist("wachtwoord.txt")) {
+
+            //stuur door naar het login scherm
+            Login Login = new Login();
+            Login.loginScherm(primaryStage);
         } else {
-            //geen wachtwoord bestand. Gebruiker door sturun naar aanmaak scherm
+
+            //geen wachtwoord bestand. Gebruiker door sturen naar aanmaak scherm en het opbecten maken
             System.err.println("Er is geen txt bestand gevonden met wachtwoorden.");
+            NieuweAccount nieuweAccount = new NieuweAccount();
             nieuweAccount.nieuweAccount(primaryStage);
-            
         }
-        //Login.loginScherm(primaryStage);
-    
-    
     }
 
     /**
      * @param args the command line arguments
      */
     public void opstrarten(String[] args) {
-        //boolean firstLogin = InlogControle.firstLogin();
         launch(args);
-        
     }
-    
+
 }

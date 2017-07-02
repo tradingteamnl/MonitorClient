@@ -1,15 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Login javafx
  */
 package Interface;
 
 //import
 import InterfaceMethoden.InlogControle;
 import InterfaceMethoden.InterfaceGlobal;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import global.ConfigGetter;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -29,7 +26,7 @@ import javafx.stage.Stage;
  *
  * @author Jaros
  */
-public class Login {
+public class Login extends ConfigGetter{
 
     //maak objecten aan
     InlogControle InlogControle = new InlogControle();
@@ -83,8 +80,12 @@ public class Login {
         primaryStage.setTitle(GlobalI.productNaam());
         Scene scene = new Scene(grid, 1200, 920);
         primaryStage.setScene(scene);
-        //scene.getStylesheets().add("global/Style2.css");
         primaryStage.show();
+
+        //kijk of css geladen mag worden
+        if (super.isLoadCss()) {
+            scene.getStylesheets().add(super.getCssLocatie());
+        }
 
         //action
         btn.setOnAction((javafx.event.ActionEvent e) -> {
@@ -92,12 +93,23 @@ public class Login {
             String gebruikersnaam = userTextField.getText();
             String wachtwoord = pwBox.getText();
             try {
-                boolean check = InlogControle.getLogin(gebruikersnaam, wachtwoord);
-            } catch (Exception ex) {
-                
-            }
+                //boolean check = InlogControle.getLogin(gebruikersnaam, wachtwoord);
+                boolean check = true;
 
-            
+                //kijk of het true is
+                if (check) {
+
+                    //maak object aan
+                    Home home = new Home();
+
+                    //stuur de gebruiker door naar de nieuwe pagina
+                    home.homeScreen(primaryStage);
+                } else {
+                    System.err.println("Log in fout");
+                }
+            } catch (Exception ex) {
+                System.err.println(ex);
+            }
         });
     }
 }

@@ -1,3 +1,6 @@
+/**
+ * Deze class is voor de inlog check
+ */
 package InterfaceMethoden;
 
 import Security.Decrypt;
@@ -35,7 +38,9 @@ public class InlogControle {
 
         //laat het wachtwoord bestand
         String wachtwoordEncrypt = fileSystem.readFile("wachtwoord.txt");
-        System.out.println(wachtwoordEncrypt);
+        
+        System.out.println("wachtwoordencrypt "+wachtwoordEncrypt);
+        
         //ontsleutel de data
         String wachtwoordSave = Decrypt.decrypt(wachtwoordEncrypt, wachtwoord);
 
