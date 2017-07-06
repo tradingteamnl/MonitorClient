@@ -6,7 +6,10 @@
 package global;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import javax.swing.JFileChooser;
@@ -26,14 +29,14 @@ public class FileSystem {
         FileSystemView fw = fr.getFileSystemView();
 
         if ("windows".equals(getOsPlatform.getOS())) {
-            return Paths.get("C:\\monitorSoftware").toString() + "\\";
+            return Paths.get("C:\\tradingMonitor").toString() + "\\";
         }
 
         if ("mac".equals(getOsPlatform.getOS())) {
-            return Paths.get(fw.getDefaultDirectory() + "//Documents//trading").toString() + "//";
+            return Paths.get(fw.getDefaultDirectory() + "//Documents//tradingMonitor").toString() + "//";
         }
 
-        return Paths.get(fw.getDefaultDirectory() + "//Documents//trading").toString() + "//";
+        return Paths.get(fw.getDefaultDirectory() + "//Documents//tradingMonitor").toString() + "//";
     }
 
     /**
@@ -66,7 +69,7 @@ public class FileSystem {
     }
 
     /**
-     * 
+     *
      * @param file bestand naam
      * @return true of false
      */
@@ -77,5 +80,22 @@ public class FileSystem {
         } else {
             return true;
         }
+    }
+
+    /**
+     *
+     * @param fileName bestand naam
+     * @param FileData bestand data
+     * @throws FileNotFoundException error systeem
+     * @throws UnsupportedEncodingException error systeem
+     */
+    public void saveFile(String fileName, String FileData) throws UnsupportedEncodingException, FileNotFoundException {
+
+        //sla bestankt op
+        System.out.println(fileLocation() + fileName);
+        System.out.println(FileData);
+        PrintWriter writer = new PrintWriter(fileLocation() + fileName, "UTF-8");
+        writer.println(FileData);
+        writer.close();
     }
 }

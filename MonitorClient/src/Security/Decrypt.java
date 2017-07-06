@@ -10,12 +10,13 @@ import javax.crypto.spec.SecretKeySpec;
 
 /**
  * Bestand is voor de decrypt
+ *
  * @author michel_desktop
  */
 public class Decrypt {
-    
+
     /**
-     * 
+     *
      * @param strEncrypted text wat er ontsluiteld moet worden.
      * @param strKey de ontsleutelings key.
      * @return return String.
@@ -32,7 +33,7 @@ public class Decrypt {
             strData = new String(decrypted);
 
         } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
-            throw new Exception("Er is een error opgetraden bij decrypten.");
+            throw new Exception(e);
         }
         return strData;
     }
