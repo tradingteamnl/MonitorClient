@@ -1,35 +1,59 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Deze class is voor de inlog check
  */
 package InterfaceMethoden;
 
+import Security.Decrypt;
+import global.FileSystem;
+import java.io.IOException;
+
 /**
- *f
+ * f
+ *
  * @author Jaros
  */
-
 public class InlogControle {
-    private String Gebruiker;
-    private String Wachtwoord;
-   
- 
-    public boolean login(String Gebruiker, String Wachtwoord){
-        boolean klopt = false;
-        this.Gebruiker = Gebruiker;
-        this.Wachtwoord = Wachtwoord;
- 
-        
-        return klopt;
+
+    //roep object aan
+    FileSystem fileSystem = new FileSystem();
+
+    /**
+     *
+     * @param gebruiker username
+     * @param wachtwoord wachtwoord wat is ingevuld.
+     * @return
+     * @throws java.io.IOException Error afvang systeem
+     */
+    public boolean getLogin(String gebruiker, String wachtwoord) throws IOException, Exception {
+        return loginCheck(gebruiker, wachtwoord);
     }
-    
-    
-    public boolean firstLogin(){
+
+    /**
+     *
+     * @param gebruiker username
+     * @param wachtwoord wachtwoord wat is ingevuld
+     * @return true of false
+     * @throws java.io.IOException Error afvang systeem
+     */
+    private boolean loginCheck(String gebruiker, String wachtwoord) throws IOException, Exception {
+
+        String wachtwoordEncrypt = fileSystem.readFile("wachtwoord.txt");
+
+        System.out.println("wachtwoordencrypt " + wachtwoordEncrypt);
+
+        //ontsleutel de data
+        String wachtwoordSave = Decrypt.decrypt(wachtwoordEncrypt, wachtwoord);
+
+        //kijk of de data het zelfde is
+        if (wachtwoordSave.equals(wachtwoord)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean firstLogin() {
         boolean klopt = true;
-        
-        
-        
         return klopt;
     }
 }
