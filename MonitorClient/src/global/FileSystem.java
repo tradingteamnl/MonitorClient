@@ -25,11 +25,21 @@ public class FileSystem {
     JFileChooser fr = new JFileChooser();
     GetOsPlatform getOsPlatform = new GetOsPlatform();
 
+    //kijk of de folder bestaat
+    public FileSystem() {
+        folderExist();
+    }
+
+    /**
+     * Deze methoden geeft de bestand locatie op
+     *
+     * @return locatie waar bestanden kunnen worden opgeslagen.
+     */
     private String fileLocation() {
         FileSystemView fw = fr.getFileSystemView();
 
         if ("windows".equals(getOsPlatform.getOS())) {
-            return Paths.get("C:\\tradingMonitor").toString() + "\\";
+            return Paths.get(fw.getDefaultDirectory() + "\\tradingMonitor").toString() + "\\";
         }
 
         if ("mac".equals(getOsPlatform.getOS())) {
