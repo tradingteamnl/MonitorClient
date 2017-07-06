@@ -50,7 +50,7 @@ public class FileSystem {
     }
 
     /**
-     * Deze methoden maakt de folder als die er niet is
+     * Deze methoden maakt de folder als die er niet is 
      */
     public void folderExist() {
 
