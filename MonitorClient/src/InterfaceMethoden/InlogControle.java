@@ -1,7 +1,7 @@
 package InterfaceMethoden;
 
 /**
- *
+ *f
  * @author Jaros
  */
 public class InlogControle {
@@ -25,12 +25,11 @@ public class InlogControle {
     private boolean loginCheck(String gebruiker, String wachtwoord) {
         
         //laat het wachtwoord bestand
-        
-        
-        return;
-    }
-
-    public boolean firstLogin() {
+        boolean klopt = false;   
+        return klopt;
+    }    
+    
+    public boolean firstLogin(){
         boolean klopt = true;
         return klopt;
     }
