@@ -8,7 +8,7 @@ import global.FileSystem;
 import java.io.IOException;
 
 /**
- *
+ *f
  * @author Jaros
  */
 public class InlogControle {
