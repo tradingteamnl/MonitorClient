@@ -120,17 +120,20 @@ public class NieuweAccount {
                         //encrypt de data
                         String encryptData = encrypt.encrypt(wachtwoord, wachtwoord);
                         System.out.println(encryptData);
-                        
+
                         //sla de data op
                         fileSystem.saveFile("wachtwoord.txt", encryptData);
 
                         //stuur de gebruiker door naar de volgende pagina
+                        Login Login = new Login();
+                        Login.loginScherm(primaryStage);
                     } catch (Exception ex) {
                         //set de text in de interface
-                        actiontarget.setText("Probleem bij data de versleutelen of bestand op te slaan");
+                        actiontarget.setText("There is a problem with the creaton of the profile");
                     }
+
                 } else {
-                    actiontarget.setText("Password is not the same as Password Confurm.");
+                    actiontarget.setText("Password is not the same as Password confirmation.");
                 }
             }
         });

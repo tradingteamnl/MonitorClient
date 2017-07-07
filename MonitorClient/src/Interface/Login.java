@@ -6,7 +6,12 @@ package Interface;
 //import
 import InterfaceMethoden.InlogControle;
 import InterfaceMethoden.InterfaceGlobal;
+import Security.Decrypt;
 import global.ConfigGetter;
+import global.FileSystem;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -27,12 +32,14 @@ import javafx.stage.Stage;
  *
  * @author Jaros
  */
-public class Login extends ConfigGetter{
+public class Login extends ConfigGetter {
 
     //maak objecten aan
     InlogControle InlogControle = new InlogControle();
     InterfaceGlobal GlobalI = new InterfaceGlobal();
     InlogControle inlogControle = new InlogControle();
+    FileSystem FileSystem = new FileSystem();
+    Decrypt Decrypt = new Decrypt();
 
     public void loginScherm(Stage primaryStage) {
 
@@ -91,41 +98,52 @@ public class Login extends ConfigGetter{
 
         //action
         btn.setOnAction((javafx.event.ActionEvent e) -> {
-/*<<<<<<< HEAD
-            String Gebruikersnaam = userTextField.getText();
-            String Wachtwoord = pwBox.getText();
-            boolean check = inlogControle.getLogin(Gebruikersnaam, Wachtwoord);
-            if (check) {
+            boolean check = false;
+            String gebruikersnaam = userTextField.getText();
+            String wachtwoord = pwBox.getText();
+            try {
+                check = Login(gebruikersnaam, wachtwoord);
+                /*<<<<<<< HEAD
+                String Gebruikersnaam = userTextField.getText();
+                String Wachtwoord = pwBox.getText();
+                boolean check = inlogControle.getLogin(Gebruikersnaam, Wachtwoord);
+                if (check) {
                 //ga naar home
                 GlobalI.setGebruiker(Gebruikersnaam);
-            } else {
+                } else {
                 userTextField.setText("");
                 pwBox.setText("");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);    // get an alert popup
                 alert.setTitle("warning");
                 alert.setHeaderText("username and/or password are incorrect");
                 alert.showAndWait();*/
-
-            String gebruikersnaam = userTextField.getText();
-            String wachtwoord = pwBox.getText();
-            try {
-                //boolean check = InlogControle.getLogin(gebruikersnaam, wachtwoord);
-                boolean check = true;
-
-                //kijk of het true is
-                if (check) {
-
-                    //maak object aan
-                    Home home = new Home();
-
-                    //stuur de gebruiker door naar de nieuwe pagina
-                    home.homeScreen(primaryStage);
-                } else {
-                    System.err.println("Log in fout");
-                }
-            } catch (Exception ex) {
-                System.err.println(ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
+
+            //boolean check = InlogControle.getLogin(gebruikersnaam, wachtwoord);
+            //kijk of het true is
+            if (check) {
+
+                //maak object aan
+                Home home = new Home();
+
+                //stuur de gebruiker door naar de nieuwe pagina
+                home.homeScreen(primaryStage);
+            } else {
+                System.err.println("Log in fout");
+            }
+
+        }
+        );
+    }
+
+    private boolean Login(String naam, String wachtwoord) throws IOException {
+        String encrypt = FileSystem.readFile("wachtwoord.txt");
+        
+                
+        boolean check = false;
+
+        return check;
     }
 }
