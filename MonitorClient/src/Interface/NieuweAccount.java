@@ -1,12 +1,13 @@
 package Interface;
 
-import InterfaceMethoden.InlogControle;
 import InterfaceMethoden.InterfaceGlobal;
 import Security.Encrypt;
 import global.FileSystem;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -26,7 +27,6 @@ import javafx.stage.Stage;
 public class NieuweAccount {
 
     //maak objecten aan
-    InlogControle InlogControle = new InlogControle();
     InterfaceGlobal GlobalI = new InterfaceGlobal();
     Encrypt encrypt = new Encrypt();
     FileSystem fileSystem = new FileSystem();
@@ -118,7 +118,8 @@ public class NieuweAccount {
                     //encrypt de data
                     try {
                         //encrypt de data
-                        String encryptData = encrypt.encrypt(wachtwoord, wachtwoord);
+                        String S = gebruikersnaam + wachtwoord;
+                        String encryptData = encrypt.encrypt(S, wachtwoord);
                         System.out.println(encryptData);
 
                         //sla de data op
@@ -129,11 +130,19 @@ public class NieuweAccount {
                         Login.loginScherm(primaryStage);
                     } catch (Exception ex) {
                         //set de text in de interface
-                        actiontarget.setText("There is a problem with the creaton of the profile");
+                        Alert alert = new Alert(AlertType.INFORMATION);
+                        alert.setTitle("Error");
+                        alert.setHeaderText("There is a problem with the creaton of the profile,\n please try again");
+                        alert.showAndWait();
+
                     }
 
                 } else {
-                    actiontarget.setText("Password is not the same as Password confirmation.");
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("\"Password is not the same as Password confirmation,\n please try again");
+                    alert.showAndWait();
+
                 }
             }
         });

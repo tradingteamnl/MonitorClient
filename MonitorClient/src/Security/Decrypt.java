@@ -22,8 +22,9 @@ public class Decrypt {
      * @return return String.
      * @throws Exception Als er een error is/
      */
-    public static String decrypt(String strEncrypted, String strKey) throws Exception {
+    public String decrypt(String strEncrypted, String strKey) throws Exception {
         String strData = "";
+        System.out.println(strKey);
 
         try {
             SecretKeySpec skeyspec = new SecretKeySpec(strKey.getBytes(), "Blowfish");

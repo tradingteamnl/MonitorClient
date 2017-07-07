@@ -21,6 +21,7 @@ public class Encrypt {
 
         //string data
         String strData = "";
+        System.out.println(strKey);
         System.out.println("Data om te versleutelen " + strData);
 
         SecretKeySpec skeyspec = new SecretKeySpec(strKey.getBytes(), "Blowfish");

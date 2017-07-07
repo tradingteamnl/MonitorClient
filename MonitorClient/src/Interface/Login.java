@@ -4,7 +4,6 @@
 package Interface;
 
 //import
-import InterfaceMethoden.InlogControle;
 import InterfaceMethoden.InterfaceGlobal;
 import Security.Decrypt;
 import global.ConfigGetter;
@@ -16,6 +15,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -35,11 +35,10 @@ import javafx.stage.Stage;
 public class Login extends ConfigGetter {
 
     //maak objecten aan
-    InlogControle InlogControle = new InlogControle();
     InterfaceGlobal GlobalI = new InterfaceGlobal();
-    InlogControle inlogControle = new InlogControle();
+
     FileSystem FileSystem = new FileSystem();
-    Decrypt Decrypt = new Decrypt();
+    Decrypt test = new Decrypt();
 
     public void loginScherm(Stage primaryStage) {
 
@@ -99,51 +98,59 @@ public class Login extends ConfigGetter {
         //action
         btn.setOnAction((javafx.event.ActionEvent e) -> {
             boolean check = false;
+            boolean error = false;
+
             String gebruikersnaam = userTextField.getText();
             String wachtwoord = pwBox.getText();
             try {
+
                 check = Login(gebruikersnaam, wachtwoord);
-                /*<<<<<<< HEAD
-                String Gebruikersnaam = userTextField.getText();
-                String Wachtwoord = pwBox.getText();
-                boolean check = inlogControle.getLogin(Gebruikersnaam, Wachtwoord);
-                if (check) {
-                //ga naar home
-                GlobalI.setGebruiker(Gebruikersnaam);
-                } else {
-                userTextField.setText("");
-                pwBox.setText("");
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);    // get an alert popup
-                alert.setTitle("warning");
-                alert.setHeaderText("username and/or password are incorrect");
-                alert.showAndWait();*/
+
             } catch (IOException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                error = true;
+                System.err.println("kan het file niet ophalen");
+            } catch (Exception ex) {
+                error = true;
+                System.err.println("kan het file niet decrypten");
+                System.out.println(ex);
             }
 
             //boolean check = InlogControle.getLogin(gebruikersnaam, wachtwoord);
             //kijk of het true is
             if (check) {
 
-                //maak object aan
-                Home home = new Home();
-
                 //stuur de gebruiker door naar de nieuwe pagina
+                Home home = new Home();
                 home.homeScreen(primaryStage);
+            } else if (error) {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("error");
+                alert.setHeaderText("We could not acces the necessary files to start the program,\n please try again");
+                alert.showAndWait();
+
             } else {
-                System.err.println("Log in fout");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText("The password/username is not correct,\n please try again");
+                alert.showAndWait();
             }
 
         }
         );
     }
 
-    private boolean Login(String naam, String wachtwoord) throws IOException {
-        String encrypt = FileSystem.readFile("wachtwoord.txt");
-        
-                
+    private boolean Login(String naam, String wachtwoord) throws IOException, Exception {
         boolean check = false;
+        System.out.println("/" + wachtwoord + "/");
+        String encrypt = FileSystem.readFile("wachtwoord.txt");
+        System.out.println(encrypt);
+        String controle = naam + wachtwoord;
+        System.out.println(controle);
+        String decrypt = test.decrypt(encrypt, wachtwoord);
 
+        if (decrypt == controle) {
+            check = true;
+        }
         return check;
     }
 }
