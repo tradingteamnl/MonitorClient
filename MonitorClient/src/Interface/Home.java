@@ -4,29 +4,36 @@
 package Interface;
 
 import global.ConfigGetter;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 /**
  *
  * @author michel
  */
-public class Home extends ConfigGetter{
+public class Home extends ConfigGetter {
+
+    statestieken statestieken = new statestieken();
 
     /**
      * Deze methoden maakt een sreen aan
      *
      * @param primaryStage
      */
-    public void homeScreen(Stage primaryStage){
+    public void homeScreen(Stage primaryStage) {
 
         //Hier wordt de menubar bovenin aangemaakt
         MenuBalk menuB = new MenuBalk();
@@ -37,25 +44,33 @@ public class Home extends ConfigGetter{
 
         //gridpane
         GridPane grid = new GridPane();
-        grid.setAlignment(Pos.CENTER);
+        grid.setMaxSize(1200, 920);
         grid.setHgap(10);
         grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
+        grid.setPadding(new javafx.geometry.Insets(10, 10, 10, 10));
         root.setCenter(grid);
         Scene scene = new Scene(root, 1200, 920);
 
         //Welkom + Letter type
-        Text scenetitle = new Text("Welcome To ");
+        Label scenetitle = new Label("Welcome to " + programmaNaam);
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(scenetitle, 0, 0, 2, 1);
+        grid.add(scenetitle, 35, 0);
 
         
-        //kijk of css geladen mag worden
-        if(super.isLoadCss()){
+        
+
+        Button btn1 = new Button("Go to statistics");
+        btn1.setPrefWidth(150);
+        GridPane.setConstraints(btn1, 0, 10);
+        btn1.setOnAction((javafx.event.ActionEvent e) -> {
+            statestieken.statisticScreen(primaryStage);
+        });
+
+        if (super.isLoadCss()) {
             scene.getStylesheets().add(super.getCssLocatie());
         }
-        
-        
+        grid.getChildren().addAll(btn1);
+
         primaryStage.setTitle("Register Customer");
         primaryStage.setScene(scene);
         primaryStage.show();

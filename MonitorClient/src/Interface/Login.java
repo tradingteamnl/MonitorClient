@@ -140,7 +140,8 @@ public class Login extends ConfigGetter {
     }
 
     private boolean Login(String naam, String wachtwoord) throws IOException, Exception {
-        boolean check = false;
+        boolean check = true;
+        /*
         System.out.println("/" + wachtwoord + "/");
         String encrypt = FileSystem.readFile("wachtwoord.txt");
         System.out.println(encrypt);
@@ -151,6 +152,7 @@ public class Login extends ConfigGetter {
         if (decrypt == controle) {
             check = true;
         }
+         */
         return check;
     }
 }

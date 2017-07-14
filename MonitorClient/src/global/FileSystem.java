@@ -26,9 +26,10 @@ public class FileSystem {
     GetOsPlatform getOsPlatform = new GetOsPlatform();
 
     //kijk of de folder bestaat
+    /*
     public FileSystem() {
         folderExist();
-    }
+    }*/
 
     /**
      * Deze methoden geeft de bestand locatie op

@@ -31,8 +31,9 @@ public class MonitorClient extends Application {
 
         int port = 9099;
         String serverName = "127.0.0.1";
-        
+        /*
         try {
+            
             System.out.println("Connecting to " + serverName + " on port " + port);
             Socket client = new Socket(serverName, port);
 
@@ -49,8 +50,8 @@ public class MonitorClient extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        
+         */
+
         //kijk het bestand bestaat
         if (fileSystem.fileExcist("wachtwoord.txt")) {
 
@@ -70,7 +71,7 @@ public class MonitorClient extends Application {
      * @param args the command line arguments
      */
     public void opstrarten(String[] args) {
-       launch(args);
+        launch(args);
     }
 
 }

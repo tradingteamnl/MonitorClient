@@ -14,6 +14,7 @@ public class ConfigGetter {
     //private
     private boolean loadCss = false;
     private String cssLocatie = "global/Style2.css";
+    public String programmaNaam = "Bit farmer";
 
     /**
      * Load css
