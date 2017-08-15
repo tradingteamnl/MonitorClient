@@ -3,6 +3,7 @@
  */
 package Interface;
 
+import Interface.balance.BalanceMain;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -29,10 +30,10 @@ public class MenuBalk {
         Login login = new Login();
         Setting setting = new Setting();
         //Profile profiel = new Profile();
+        BalanceMain balanceMain = new BalanceMain();
 
         // File menu - new, save, exit
         Menu homeB = new Menu("Options");
-        Menu options = new Menu("Options");
         MenuItem homePage = new MenuItem("Go to homepage");
         MenuItem logout = new MenuItem("Logout");
         MenuItem exit = new MenuItem("Exit application");
@@ -59,16 +60,13 @@ public class MenuBalk {
         Label helpLabel = new Label("Help");
         Menu help = new Menu();
         help.setGraphic(helpLabel);
-        helpLabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (Desktop.isDesktopSupported()) {
-                    try {
-                        File myFile = new File("src/images/Handleiding.pdf");
-                        Desktop.getDesktop().open(myFile);
-                    } catch (IOException ex) {
-                        System.out.println(ex);
-                    }
+        helpLabel.setOnMouseClicked((MouseEvent event) -> {
+            if (Desktop.isDesktopSupported()) {
+                try {
+                    File myFile = new File("src/images/Handleiding.pdf");
+                    Desktop.getDesktop().open(myFile);
+                } catch (IOException ex) {
+                    System.out.println(ex);
                 }
             }
         });
@@ -77,15 +75,32 @@ public class MenuBalk {
         Label menuLabel = new Label("Profile");
         Menu profile = new Menu();
         profile.setGraphic(menuLabel);
-        menuLabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                //profiel.star(primaryStage);
-            }
+        menuLabel.setOnMouseClicked((MouseEvent event) -> {
+            //profiel.star(primaryStage);
         });
 
+        //balance button
+        Label balanceLabel = new Label("Balance");
+        Menu balance = new Menu();
+        balance.setGraphic(balanceLabel);
+        balanceLabel.setOnMouseClicked((MouseEvent event) -> {
+            
+            //stuur door naar balance main pagina
+            balanceMain.balanceMain(primaryStage);
+        });
+        
+        //balance button
+        Label settingsLabel = new Label("Settings");
+        Menu settings = new Menu();
+        settings.setGraphic(settingsLabel);
+        settingsLabel.setOnMouseClicked((MouseEvent event) -> {
+            
+            //stuur door naar settings main pagina
+            setting.setting(primaryStage);
+        });
+        
         //alles toevoegen bij menubar
-        menuBar.getMenus().addAll(homeB, help, profile);
+        menuBar.getMenus().addAll(homeB, help, profile, balance, settings);
 
         return menuBar;
 
