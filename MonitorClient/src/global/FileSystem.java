@@ -50,7 +50,7 @@ public class FileSystem {
     }
 
     /**
-     * Deze methoden maakt de folder als die er niet is 
+     * Deze methoden maakt de folder als die er niet is
      */
     public void folderExist() {
 
@@ -79,6 +79,7 @@ public class FileSystem {
     }
 
     /**
+     * Kijk of het bestand bestaat
      *
      * @param file bestand naam
      * @return true of false
@@ -102,10 +103,29 @@ public class FileSystem {
     public void saveFile(String fileName, String FileData) throws UnsupportedEncodingException, FileNotFoundException {
 
         //sla bestankt op
-        System.out.println(fileLocation() + fileName);
-        System.out.println(FileData);
         PrintWriter writer = new PrintWriter(fileLocation() + fileName, "UTF-8");
         writer.println(FileData);
         writer.close();
+    }
+
+    /**
+     * Geef de bestand locatie aan
+     *
+     * @param file bestand naam
+     * @return Locatie waar het bestand staat in het os
+     */
+    public String inputStreamFileLocation(String file) {
+
+        //filelocatie en de bestansnaam
+        return fileLocation() + file;
+    }
+
+    /**
+     * Locatie waar bestanden kunnen worden opgeslagen
+     *
+     * @return bestand locatie
+     */
+    public String saveLocation() {
+        return fileLocation();
     }
 }
