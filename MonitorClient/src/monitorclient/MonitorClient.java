@@ -23,34 +23,42 @@ import javafx.stage.Stage;
  */
 public class MonitorClient extends Application {
 
+    //variable
+    private static final boolean DEV_MODUS = false;
+    private static final boolean AUTO_RELOAD = false;
+    private static final boolean SOCKET_SERVER_MODUS = true;
+    private static final boolean CONNECT_TO_SERVER = false;
+
     //maak objecten aan
     FileSystem fileSystem = new FileSystem();
 
     @Override
     public void start(Stage primaryStage) {
 
-        int port = 9099;
-        String serverName = "127.0.0.1";
-        
-        try {
-            System.out.println("Connecting to " + serverName + " on port " + port);
-            Socket client = new Socket(serverName, port);
+        //test verbinden met de server
+        if (CONNECT_TO_SERVER) {
+            int port = 9099;
+            String serverName = "127.0.0.1";
 
-            System.out.println("Just connected to " + client.getRemoteSocketAddress());
-            OutputStream outToServer = client.getOutputStream();
-            DataOutputStream out = new DataOutputStream(outToServer);
+            try {
+                System.out.println("Connecting to " + serverName + " on port " + port);
+                Socket client = new Socket(serverName, port);
 
-            out.writeUTF("Client send " + client.getLocalSocketAddress());
-            InputStream inFromServer = client.getInputStream();
-            DataInputStream in = new DataInputStream(inFromServer);
+                System.out.println("Just connected to " + client.getRemoteSocketAddress());
+                OutputStream outToServer = client.getOutputStream();
+                DataOutputStream out = new DataOutputStream(outToServer);
 
-            System.out.println("Server says " + in.readUTF());
-            client.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+                out.writeUTF("Client send " + client.getLocalSocketAddress());
+                InputStream inFromServer = client.getInputStream();
+                DataInputStream in = new DataInputStream(inFromServer);
+
+                System.out.println("Server says " + in.readUTF());
+                client.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        
-        
+
         //kijk het bestand bestaat
         if (fileSystem.fileExcist("wachtwoord.txt")) {
 
@@ -69,8 +77,8 @@ public class MonitorClient extends Application {
     /**
      * @param args the command line arguments
      */
-    public void opstrarten(String[] args) {
-       launch(args);
+    public static void main(String[] args) {
+        launch(args);
     }
 
 }
